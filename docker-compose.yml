@@ -1,48 +1,42 @@
-version: '3'
-
+version: '3.2'
 services:
   backend:
     container_name: backend
-    build: 
+    build:
       context: backend
       dockerfile: Dockerfile
-    image: backend
-    restart: always
-    env_file: .env
+    env_file: .env.example
     ports:
-      - '4000:3001'
+      - '4000:3000'
     depends_on:
       - postgres
+    restart: unless-stopped
     networks:
-      - backend
-      - frontend
-
+      - backend_network
+    volumes:
+      - type: bind
+        source: ./backend/src
+        target: /app/src
   frontend:
     container_name: frontend
-    build: 
-      context: frontend
+    build:
+      context: backend
       dockerfile: Dockerfile
-    image: frontend
-    restart: always
     ports:
-      - '8081:80'
+      - '3001:3000'
+    restart: unless-stopped
     networks:
-      - frontend
-      - backend
-
-  postgres:
-    container_name: database
-    image: postgres:latest
-    env_file: .env
+      - frontend_network
     volumes:
-      - postgres_data:/data/postgres
-    restart: always
+      - type: bind
+        source: ./frontend/src
+        target: /app/src
+  postgres:
+    container_name: postgres
+    image: postgres
+    restart: unless-stopped
+    env_file: .env.example
+    volumes:
+      - pg_data:/data/postgres
     networks:
-      - backend
-
-volumes:
-  postgres_data:
-
-networks:
-  backend:
-  frontend:
+      - backend_network
