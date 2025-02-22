@@ -19,11 +19,9 @@ export class AuthController {
 
   @Post('signup')
   async signup(@Body() createUserDto: CreateUserDto) {
+    console.log('Signup called with:', createUserDto);
     const user = await this.usersService.create(createUserDto);
     const { password, ...userWithoutPassword } = user;
-
-    return {
-      ...userWithoutPassword,
-    };
+    return userWithoutPassword;
   }
 }

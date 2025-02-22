@@ -1,4 +1,4 @@
-export const URL = "http://localhost:3000";
+export const URL = "http://localhost:4000";
 
 export const MINIMUM_PASSWORD_LENGTH = 3;
 export const MINIMUM_USERNAME_LENGTH = 3;
@@ -9,12 +9,12 @@ export const EMAIL_REGULAR =
 export const URL_REGULAR =
   /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
 
-export const getBase64 = (file) => {
+export const getBase64 = file => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => resolve(reader.result);
-    reader.onerror = (error) => reject(error);
+    reader.onerror = error => reject(error);
   });
 };
 
