@@ -15,6 +15,4 @@ RUN npm ci --omit=dev --no-audit --no-fund \
 COPY --from=builder /app/dist ./dist
 COPY ./ecosystem.config.js ./
 
-RUN while ! nc -z database 5432; do sleep 1; done && echo "PostgreSQL is up and running"
-
 ENTRYPOINT ["pm2-runtime", "start", "ecosystem.config.js"]
