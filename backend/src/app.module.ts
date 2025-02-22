@@ -15,6 +15,7 @@ import { AuthModule } from './auth/auth.module';
     ConfigModule.forRoot({
       isGlobal: true,
       load: [config],
+      envFilePath: '../../.env',
     }),
     TypeOrmModule.forRootAsync({
       useClass: DatabaseService,
