@@ -30,7 +30,7 @@ services:
       - frontend
       
   postgres:
-    container_name: postgres
+    container_name: database
     image: postgres:latest
     env_file: .env
     volumes:
