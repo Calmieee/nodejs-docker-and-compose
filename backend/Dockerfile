@@ -4,6 +4,7 @@ COPY package*.json ./
 RUN npm ci --no-audit --no-fund
 COPY . ./
 RUN npm run build 
+RUN ls -la /app/dist
 
 FROM node:16-alpine AS backend
 WORKDIR /app
