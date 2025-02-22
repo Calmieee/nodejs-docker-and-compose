@@ -28,7 +28,7 @@ services:
       - '8081:80'
     networks:
       - frontend
-      
+      - backend
   postgres:
     container_name: database
     image: postgres:latest
