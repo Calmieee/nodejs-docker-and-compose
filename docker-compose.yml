@@ -12,6 +12,7 @@ services:
     ports:
       - '4000:3001'
     depends_on:
+      - frontend
       - postgres
     networks:
       - backend
@@ -29,6 +30,7 @@ services:
     networks:
       - frontend
       - backend
+
   postgres:
     container_name: database
     image: postgres:latest
