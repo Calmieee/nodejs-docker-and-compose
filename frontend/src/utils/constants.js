@@ -1,4 +1,4 @@
-export const URL = "http://193.246.150.46:4000";
+export const URL = "api.student-sr-kpd.nomorepartiessbs.ru";
 
 export const MINIMUM_PASSWORD_LENGTH = 3;
 export const MINIMUM_USERNAME_LENGTH = 3;
