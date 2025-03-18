@@ -7,4 +7,4 @@ IP адрес 193.246.150.46
 
 Frontend https://student-sr-kpd.nomorepartiessbs.ru
 
-Backend https://api-student-sr-kpd.nomorepartiessbs.ru
+Backend https://api.student-sr-kpd.nomorepartiessbs.ru
